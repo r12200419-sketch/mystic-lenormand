@@ -1,0 +1,112 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #151126, #302044);
+    color: #f5e8cf;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 25px;
+    border-bottom: 1px solid #6b5277;
+}
+
+header h2 {
+    color: #e4c58b;
+    letter-spacing: 3px;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #c8b6d4;
+}
+
+.hero {
+    text-align: center;
+    padding: 75px 20px 55px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin: 20px 0;
+    color: #f4dfb4;
+}
+
+.hero p {
+    color: #d4bedb;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 850px;
+    margin: 0 auto 70px;
+    padding: 0 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid #80668c;
+    border-radius: 16px;
+    padding: 40px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #f5e8cf;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(220,185,135,0.12);
+    border-color: #e4c58b;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.symbol {
+    font-size: 45px;
+    color: #e4c58b;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #c8b6d4;
+    margin-bottom: 25px;
+}
+
+.card span {
+    color: #e4c58b;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #ad9abb;
+    font-size: 12px;
+}
+
+footer p {
+    margin: 6px;
+}
+
+@media (max-width: 600px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
