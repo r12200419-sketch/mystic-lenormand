@@ -1,67 +1,26 @@
-
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Mystic Lenormand</title>
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-
-    <header>
-        <h2>☾ MYSTIC LENORMAND</h2>
-        <p>雷諾曼卡牌占卜</p>
-    </header>
-
-    <main>
-        <section class="hero">
-            <p>✦ DISCOVER YOUR INNER WISDOM ✦</p>
-            <h1>讓卡牌訴說你的故事</h1>
-            <p>透過 36 張雷諾曼卡牌，探索生活中的可能性</p>
-        </section>
-
-        <section class="menu">
-
-            <a href="/daily" class="card">
-                <div class="symbol">☀</div>
-                <h2>每日一張牌</h2>
-                <p>抽取今日的專屬指引</p>
-                <span>開始占卜 →</span>
-            </a>
-
-            <a href="/yesno" class="card">
-                <div class="symbol">✧</div>
-                <h2>是非題占卜</h2>
-                <p>探索問題的可能傾向</p>
-                <span>開始占卜 →</span>
-            </a>
-
-            <a href="/three" class="card">
-                <div class="symbol">☽</div>
-                <h2>三張牌占卜</h2>
-                <p>了解事情的發展脈絡</p>
-                <span>開始占卜 →</span>
-            </a>
-
-            <a href="/five" class="card">
-                <div class="symbol">✦</div>
-                <h2>五張牌占卜</h2>
-                <p>深入探索問題與卡牌關聯</p>
-                <span>開始占卜 →</span>
-            </a>
-
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2026 Mystic Lenormand</p>
-        <p>卡牌解讀僅供娛樂與自我探索</p>
-    </footer>
-
-</body>
-</html>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Mystic Lenormand 月光神殿，透過雷諾曼卡牌探索內心。"><title>月光神殿 | Mystic Lenormand</title><link rel="preload" as="image" href="{{ url_for('static',filename='moonlit-home-art.png') }}"><link rel="stylesheet" href="{{ url_for('static',filename='moonlit-home.css') }}"></head><body>
+<main class="sanctuary">
+  <div class="desktop-art" aria-label="月光神殿：哥德式神殿、滿月、湖面、燭光與四種占卜卡牌">
+    <img class="art" src="{{ url_for('static',filename='moonlit-home-art.png') }}" width="1690" height="931" alt="月光神殿，星空、滿月與四張精緻占卜卡牌" fetchpriority="high" decoding="async">
+    <a class="hotspot nav-home" href="/" aria-label="首頁"></a>
+    <a class="hotspot nav-daily" href="/daily" aria-label="每日一張牌"></a>
+    <a class="hotspot nav-yesno" href="/yesno" aria-label="是非題占卜"></a>
+    <a class="hotspot nav-three" href="/three" aria-label="三張牌占卜"></a>
+    <a class="hotspot nav-five" href="/five" aria-label="五張牌占卜"></a>
+    <a class="hotspot card-daily" href="/daily" aria-label="開始每日一張牌占卜"></a>
+    <a class="hotspot card-yesno" href="/yesno" aria-label="開始是非題占卜"></a>
+    <a class="hotspot card-three" href="/three" aria-label="開始三張牌占卜"></a>
+    <a class="hotspot card-five" href="/five" aria-label="開始五張牌占卜"></a>
+  </div>
+  <div class="mobile-layout">
+    <div class="mobile-scene" role="img" aria-label="月光下的神殿與滿月"></div>
+    <div class="mobile-title"><p class="eyebrow">MYSTIC LENORMAND</p><h1>月光神殿</h1><p class="script">Moonlit Sanctuary</p><p class="tagline">在月光下，聽見內心真正的聲音</p></div>
+    <nav class="mobile-grid" aria-label="占卜方式">
+      <a href="/daily"><span class="sigil">☼</span><strong>每日一張牌</strong><small>Daily Guidance</small><span class="arrow">↗</span></a>
+      <a href="/yesno"><span class="sigil">☾</span><strong>是非題占卜</strong><small>Yes or No</small><span class="arrow">↗</span></a>
+      <a href="/three"><span class="sigil">✦</span><strong>三張牌占卜</strong><small>Three Cards</small><span class="arrow">↗</span></a>
+      <a href="/five"><span class="sigil">❀</span><strong>五張牌占卜</strong><small>Five Cards</small><span class="arrow">↗</span></a>
+    </nav>
+    <p class="mobile-footer">✧　讓月光指引你的故事　✧</p>
+  </div>
+</main></body></html>

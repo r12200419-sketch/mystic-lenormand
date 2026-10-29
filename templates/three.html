@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>三張牌占卜 | Mystic Lenormand</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fan.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='sanctuary-inner.css') }}">
+</head>
+
+<body class="sanctuary-reading sanctuary-three">
+<div class="sanctuary-backdrop" aria-hidden="true"></div>
+
+<header class="sanctuary-header"><a class="sanctuary-brand" href="{{ url_for('home') }}">☾ &nbsp; Mystic Lenormand</a><nav class="sanctuary-nav"><a href="{{ url_for('home') }}">首頁</a><a href="{{ url_for('daily') }}">每日一張</a><a href="{{ url_for('yesno') }}">是非題</a><a href="{{ url_for('three') }}">三張牌</a><a href="{{ url_for('five') }}">五張牌</a></nav><div class="sanctuary-header-original">
+    <h2>☾ MYSTIC LENORMAND</h2>
+    <p>三張牌占卜</p>
+</div></header>
+
+<main class="daily-page sanctuary-main"><div class="sanctuary-kicker">✦ &nbsp; M Y S T I C &nbsp; L E N O R M A N D &nbsp; ✦</div>
+
+    <h1>✦ 三張牌占卜 ✦</h1>
+    <p>回顧過去，理解現在，探索未來。</p>
+
+    <div class="three-card-container">
+
+        {% set positions = ["過去", "現在", "未來"] %}
+
+        {% if cards %}
+
+            {% for card in cards %}
+
+            <div class="three-card-item">
+
+                <h3>{{ positions[loop.index0] }}</h3>
+
+                <!-- 翻牌容器 -->
+                <div class="flip-card">
+
+                    <div class="flip-card-inner three-flip">
+
+                        <!-- 卡牌背面 -->
+                        <div class="flip-card-front">
+                            ☾
+                        </div>
+
+                        <!-- 卡牌正面 -->
+                        <div class="flip-card-back">
+
+                            <img
+                                src="{{ url_for('static', filename=card.image) }}"
+                                alt="{{ card.name }}"
+                                class="lenormand-image"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- 卡牌解讀 -->
+                <div class="card-meaning three-meaning">
+
+                    <h3>✧ {{ card.name }} ✧</h3>
+
+                    <h4>卡牌關鍵字</h4>
+                    <p>{{ card.keywords }}</p>
+
+                    <h4>卡牌解讀</h4>
+                    <p>{{ card.meaning }}</p>
+                    {% if card.detail %}<h4>✧ 詳細牌義</h4><p>{{ card.detail }}</p>{% endif %}
+                    {% if card.advice %}<h4>✧ 行動建議</h4><p>{{ card.advice }}</p>{% endif %}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <!-- 尚未抽牌：顯示三張卡背 -->
+            {% for i in range(3) %}
+
+            <div class="three-card-item">
+
+                <h3>{{ positions[i] }}</h3>
+
+                <div class="flip-card">
+
+                    <div class="flip-card-inner">
+
+                        <div class="flip-card-front">
+                            ☾
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+    
+<!-- 三張牌綜合解讀 -->
+{% if reading %}
+
+<div class="card-meaning three-combined-reading">
+
+    <h2>✧ 三張牌綜合解讀 ✧</h2>
+
+    <h3>✦ 三個位置的詳細解析</h3>
+    {% for explanation in reading.positions %}<p class="reading-position">{{ explanation }}</p>{% endfor %}
+    <h3>過去 × 現在</h3>
+    <p>{{ reading.past_present }}</p>
+
+    <h3>現在 × 未來</h3>
+    <p>{{ reading.present_future }}</p>
+
+    <h3>✦ 整體發展 ✦</h3>
+    <p>{{ reading.summary }}</p>
+    <h3>✦ 綜合行動建議</h3><p>{{ reading.advice }}</p>
+
+</div>
+
+{% endif %}
+
+
+<!-- 原本的抽牌按鈕，保留不變 -->
+<form method="POST">
+
+    <button type="submit" class="draw-button">
+        {% if cards %}重新抽牌{% else %}抽取三張牌{% endif %}
+    </button>
+
+</form>
+
+
+    <!-- 返回首頁 -->
+    <p class="back-home">
+
+        <a href="{{ url_for('home') }}">
+            ← 返回首頁
+        </a>
+
+    </p>
+
+<div class="sanctuary-footer-mark" aria-hidden="true">☽ &nbsp; ✧ &nbsp; ✦ &nbsp; ✧ &nbsp; ☾</div></main>
+
+<!-- 三張牌依序翻轉動畫 -->
+{% if cards %}
+
+<script>
+
+window.addEventListener("load", function () {
+
+    const flipCards =
+        document.querySelectorAll(".three-flip");
+
+    const meanings =
+        document.querySelectorAll(".three-meaning");
+
+    flipCards.forEach(function(card, index) {
+
+        // 每張牌依序翻開
+        setTimeout(function() {
+
+            card.classList.add("flipped");
+
+        }, 500 + index * 1200);
+
+        // 翻牌後顯示牌義
+        setTimeout(function() {
+
+            meanings[index].classList.add("visible");
+
+        }, 1600 + index * 1200);
+
+    });
+
+});
+
+</script>
+
+{% endif %}
+
+<script src="{{ url_for('static', filename='shuffle.js') }}" defer></script>
+</body>
+</html>

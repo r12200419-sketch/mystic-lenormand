@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>五張牌占卜 | Mystic Lenormand</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fan.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='sanctuary-inner.css') }}">
+</head>
+
+<body class="sanctuary-reading sanctuary-five">
+<div class="sanctuary-backdrop" aria-hidden="true"></div>
+
+<header class="sanctuary-header"><a class="sanctuary-brand" href="{{ url_for('home') }}">☾ &nbsp; Mystic Lenormand</a><nav class="sanctuary-nav"><a href="{{ url_for('home') }}">首頁</a><a href="{{ url_for('daily') }}">每日一張</a><a href="{{ url_for('yesno') }}">是非題</a><a href="{{ url_for('three') }}">三張牌</a><a href="{{ url_for('five') }}">五張牌</a></nav><div class="sanctuary-header-original">
+    <h2>☾ MYSTIC LENORMAND</h2>
+    <p>五張牌占卜</p>
+</div></header>
+
+<main class="daily-page sanctuary-main"><div class="sanctuary-kicker">✦ &nbsp; M Y S T I C &nbsp; L E N O R M A N D &nbsp; ✦</div>
+
+    <h1>✦ 五張牌占卜 ✦</h1>
+    <p>透過五張卡牌，探索問題的整體發展。</p>
+
+    {% set positions = [
+        "起因", "影響", "核心", "發展", "結果"
+    ] %}
+
+    <div class="five-card-container">
+
+        {% if cards %}
+
+            {% for card in cards %}
+
+            <div class="five-card-item">
+
+                <h3>{{ positions[loop.index0] }}</h3>
+
+                <!-- 翻牌容器 -->
+                <div class="flip-card">
+
+                    <div class="flip-card-inner five-flip">
+
+                        <!-- 卡牌背面 -->
+                        <div class="flip-card-front">
+                            ☾
+                        </div>
+
+                        <!-- 卡牌正面 -->
+                        <div class="flip-card-back">
+
+                            <img
+                                src="{{ url_for('static', filename=card.image) }}"
+                                alt="{{ card.name }}"
+                                class="lenormand-image"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- 單張卡牌解讀 -->
+                <div class="card-meaning five-meaning">
+
+                    <h3>✧ {{ card.name }} ✧</h3>
+
+                    <h4>卡牌關鍵字</h4>
+                    <p>{{ card.keywords }}</p>
+
+                    <h4>卡牌解讀</h4>
+                    <p>{{ card.meaning }}</p>
+                    {% if card.detail %}<h4>✧ 詳細牌義</h4><p>{{ card.detail }}</p>{% endif %}
+                    {% if card.advice %}<h4>✧ 行動建議</h4><p>{{ card.advice }}</p>{% endif %}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <!-- 尚未抽牌：顯示五張卡背 -->
+            {% for i in range(5) %}
+
+            <div class="five-card-item">
+
+                <h3>{{ positions[i] }}</h3>
+
+                <div class="flip-card">
+
+                    <div class="flip-card-inner">
+
+                        <div class="flip-card-front">
+                            ☾
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+
+    {% if cards %}
+
+    <!-- 使用 reading.py 真正計算出的完整組合解析 -->
+    <div class="five-reading five-reading-reveal">
+      <h2>✧ 五張牌綜合解讀 ✧</h2>
+      {% if reading %}
+      <h3>✦ 五個位置的詳細解析</h3>
+      {% for explanation in reading.positions %}<p class="reading-position">{{ explanation }}</p>{% endfor %}
+      <h3>✦ 核心牌分析</h3><p>{{ reading.core }}</p>
+      <h3>✦ 相鄰牌互動</h3><p>{{ reading.neighbors }}</p>
+      <h3>✦ 鏡像牌分析</h3><p>{{ reading.mirrors }}</p>
+      <h3>✦ 整體發展</h3><p>{{ reading.summary }}</p>
+      <h3>✦ 綜合行動建議</h3><p>{{ reading.advice }}</p>
+      {% endif %}
+    </div>
+
+    {% endif %}
+
+    <!-- 抽牌按鈕 -->
+    <form method="POST">
+
+        <button type="submit" class="draw-button">
+
+            {% if cards %}
+                重新抽牌
+            {% else %}
+                抽取五張牌
+            {% endif %}
+
+        </button>
+
+    </form>
+
+    <!-- 返回首頁 -->
+    <p class="back-home">
+
+        <a href="{{ url_for('home') }}">
+            ← 返回首頁
+        </a>
+
+    </p>
+
+<div class="sanctuary-footer-mark" aria-hidden="true">☽ &nbsp; ✧ &nbsp; ✦ &nbsp; ✧ &nbsp; ☾</div></main>
+
+<!-- 五張牌依序翻轉動畫 -->
+{% if cards %}
+
+<script>
+
+window.addEventListener("load", function () {
+
+    const flipCards =
+        document.querySelectorAll(".five-flip");
+
+    const meanings =
+        document.querySelectorAll(".five-meaning");
+
+    const reading =
+        document.querySelector(".five-reading-reveal");
+
+    flipCards.forEach(function(card, index) {
+
+        // 五張卡牌依序翻開
+        setTimeout(function() {
+
+            card.classList.add("flipped");
+
+        }, 500 + index * 1200);
+
+        // 每張卡牌翻開後顯示牌義
+        setTimeout(function() {
+
+            meanings[index].classList.add("visible");
+
+        }, 1600 + index * 1200);
+
+    });
+
+    // 五張牌翻完後顯示綜合解讀
+    setTimeout(function() {
+
+        reading.classList.add("visible");
+
+    }, 6800);
+
+});
+
+</script>
+
+{% endif %}
+
+<script src="{{ url_for('static', filename='shuffle.js') }}" defer></script>
+</body>
+</html>

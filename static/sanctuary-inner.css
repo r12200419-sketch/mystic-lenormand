@@ -1,0 +1,49 @@
+/* Moonlit Sanctuary / interior pages, v1.  Scoped to avoid modifying the homepage. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&display=swap');
+body.sanctuary-reading{--moon-gold:#e7c896;--moon-white:#f7eddf;--moon-silver:#c7cce1;background:#070d1c!important;color:var(--moon-white)!important;min-height:100vh;margin:0;position:relative;isolation:isolate;font-family:'Noto Serif TC',serif;}
+body.sanctuary-reading::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 3%,rgba(90,103,158,.29),transparent 58%),linear-gradient(90deg,#070b18 0%,#10192e 22%,#111a32 50%,#10192e 78%,#070b18 100%)}
+.sanctuary-backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.8;background:linear-gradient(90deg,rgba(6,10,24,.04),rgba(8,12,28,.64) 27%,rgba(8,12,28,.75) 73%,rgba(6,10,24,.06)),url('/static/moonlit-temple.webp') center center / cover no-repeat;filter:saturate(.86)}
+/* hide the original text embedded in the decorative homepage artwork */
+.sanctuary-backdrop::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,12,26,.18),rgba(7,12,26,.93) 24%,rgba(7,12,26,.95) 76%,rgba(7,12,26,.18)),linear-gradient(0deg,rgba(7,12,26,.96),transparent 25%,rgba(7,12,26,.45));}
+.sanctuary-reading .sanctuary-header{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;padding:10px clamp(20px,5vw,86px);box-sizing:border-box;background:rgba(6,10,25,.74);border-bottom:1px solid rgba(233,195,137,.28);backdrop-filter:blur(18px);text-align:left;}
+.sanctuary-reading .sanctuary-header-original{display:none!important}
+.sanctuary-brand{font:500 clamp(20px,2.2vw,29px)/1.2 'Cormorant Garamond',Georgia,serif;letter-spacing:.6px;color:#f5dfb9!important;text-decoration:none!important;white-space:nowrap}
+.sanctuary-nav{display:flex;gap:clamp(10px,2.1vw,32px);align-items:center;flex-wrap:wrap}
+.sanctuary-nav a{color:#e7d5c2!important;text-decoration:none!important;font-size:12px;letter-spacing:2px;transition:color .2s}
+.sanctuary-nav a:hover{color:white!important;text-shadow:0 0 14px #edce9c}
+.sanctuary-reading .sanctuary-main{box-sizing:border-box;width:min(1160px,calc(100% - 40px));min-height:calc(100vh - 96px);margin:0 auto!important;padding:48px 0 55px!important;text-align:center;background:none!important;box-shadow:none!important;border:none!important;max-width:none!important;}
+.sanctuary-kicker{font:500 11px/1.6 'Cormorant Garamond',Georgia,serif;color:#ddbd89;letter-spacing:4px;margin-bottom:18px}
+.sanctuary-main>h1{font:500 clamp(30px,4vw,52px)/1.35 'Noto Serif TC',serif!important;color:#f5e2c7!important;letter-spacing:7px!important;text-shadow:0 2px 26px #e9b77b35;margin:0 auto 13px!important;}
+.sanctuary-main>p:not(.back-home){color:#c8c6d5!important;letter-spacing:1.6px;line-height:1.9;font-size:14px;margin-bottom:24px}
+.sanctuary-main .fan-panel{width:min(100%,1080px);box-sizing:border-box;padding:32px clamp(14px,3vw,40px) 27px;border:1px solid rgba(238,202,151,.56);border-radius:9px;background:linear-gradient(135deg,rgba(16,23,46,.97),rgba(9,14,31,.98) 48%,rgba(18,25,46,.97));box-shadow:0 35px 90px #0009,inset 0 0 0 6px #e7c89608,inset 0 0 0 7px #e7c8961f;overflow:hidden}
+.sanctuary-main .fan-panel::before,.sanctuary-main .fan-panel::after{color:#e9c78f}
+.sanctuary-main .fan-eyebrow{font-size:11px;color:#d6b98b;letter-spacing:4px}
+.sanctuary-main .fan-title{color:#f7e4c6;font-family:'Noto Serif TC',serif;letter-spacing:6px}
+.sanctuary-main .fan-subtitle{color:#cbd0df}
+.sanctuary-main .fan-table{height:clamp(330px,35vw,430px);background:radial-gradient(ellipse at 50% 45%,rgba(65,65,109,.24),transparent 60%),linear-gradient(125deg,rgba(11,20,46,.72),rgba(10,15,32,.83)),url('/static/velvet.webp') center / cover no-repeat;border:1px solid #d9b67c88;border-radius:4px;box-shadow:inset 0 0 0 9px #070e20a8,inset 0 0 0 10px #e2bc8250,inset 0 0 95px #000c,0 17px 48px #0008}
+.sanctuary-main .fan-table::before{inset:21px;border:1px solid #e7c8964d;border-radius:2px}
+.sanctuary-main .fan-card,.sanctuary-main .fan-choice{background-image:url('/static/card-back-premium.webp')!important;filter:drop-shadow(0 5px 5px #000c)}
+.sanctuary-main .fan-card{border-radius:3px}
+.sanctuary-main .fan-choice{border-radius:4px}
+.sanctuary-main .fan-choice:hover,.sanctuary-main .fan-choice:focus-visible{filter:drop-shadow(0 0 12px #f3d19a) drop-shadow(0 10px 10px #000b)}
+.sanctuary-main .fan-hold{background:#18213d!important;border:1px solid #e2be8b!important;color:#f3d9ac!important}
+.sanctuary-main .fan-done{background:linear-gradient(125deg,#f0d9ae,#cba56e)!important;color:#1c2136!important;border:1px solid #f3deb9!important}
+.sanctuary-main .fan-status,.sanctuary-main .fan-slot{color:#d7cfda}
+.sanctuary-main .fan-slot{border-color:#cda977}
+.sanctuary-main .flip-card-front{background:#0b1329 url('/static/card-back-premium.webp') center / 100% 100% no-repeat!important;color:transparent!important;border:0!important;box-shadow:0 18px 38px #0009,0 0 0 1px #d7b27788!important}
+.sanctuary-main .flip-card,.sanctuary-main .flip-card-inner,.sanctuary-main .flip-card-back{border-radius:5px!important}
+.sanctuary-main .flip-card-back{background:#0a1023!important;border:1px solid #d9bb87!important;overflow:hidden}
+.sanctuary-main .lenormand-image{width:100%;height:100%;object-fit:cover;display:block}
+.sanctuary-main .card-meaning,.sanctuary-main .three-combined-reading,.sanctuary-main .five-reading-reveal{background:linear-gradient(130deg,rgba(21,30,56,.94),rgba(12,18,38,.96))!important;color:#eee4d8!important;border:1px solid #d6b78477!important;border-radius:8px!important;box-shadow:0 14px 42px #0006,inset 0 0 0 5px #d6b78409!important;padding:25px!important;line-height:2!important}
+.sanctuary-main .card-meaning h3,.sanctuary-main .card-meaning h4,.sanctuary-main .three-combined-reading h3,.sanctuary-main .five-reading-reveal h3{color:#f3d4a0!important}
+.sanctuary-main .draw-button{border:1px solid #e4c08a!important;background:linear-gradient(135deg,#e9d0a3,#c8a26d)!important;color:#1c2036!important;border-radius:100px!important;padding:12px 28px!important;box-shadow:0 5px 20px #0007!important}
+.sanctuary-main .back-home a{color:#e9c995!important;text-decoration:none!important}
+.sanctuary-footer-mark{color:#e3c38d;font-size:18px;letter-spacing:20px;margin:48px auto 0;opacity:.85}
+.sanctuary-reading .fan-morph-card{background-image:url('/static/card-back-premium.webp')!important}
+@media(max-width:760px){.sanctuary-reading .sanctuary-header{padding:15px 16px;flex-direction:column;gap:13px}.sanctuary-nav{justify-content:center;gap:9px 15px}.sanctuary-nav a{font-size:10px;letter-spacing:.5px}.sanctuary-reading .sanctuary-main{width:calc(100% - 22px);padding-top:35px!important}.sanctuary-main .fan-panel{padding:26px 11px 22px}.sanctuary-main .fan-table{height:340px}.sanctuary-footer-mark{letter-spacing:8px}}
+
+/* Restored in-depth interpretations */
+.sanctuary-main .reading-position{border-left:2px solid rgba(226,192,139,.62);padding:9px 16px;margin:13px 0!important;text-align:left;background:rgba(238,206,160,.035)}
+.sanctuary-main .card-meaning p,.sanctuary-main .five-reading p{line-height:2.05;letter-spacing:.035em;text-align:left}
+.sanctuary-main .card-meaning h4{margin-top:18px;color:#f0cf9d!important}
+.sanctuary-main .three-combined-reading,.sanctuary-main .five-reading-reveal{max-width:950px;margin:28px auto;padding:clamp(22px,4vw,44px)!important}

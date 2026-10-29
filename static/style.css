@@ -110,3 +110,1064 @@ footer p {
         font-size: 28px;
     }
 }
+
+/* 每日一張牌 */
+
+.daily-page {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.daily-page h1 {
+    color: #e4c58b;
+    margin-bottom: 20px;
+}
+
+.daily-page > p {
+    color: #c8b6d4;
+}
+
+/* 翻牌容器 */
+
+.flip-card {
+    width: 220px;
+    height: 320px;
+    margin: 45px auto 30px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+/* 卡牌正反面 */
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e4c58b;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: linear-gradient(145deg, #39244f, #20172f);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front {
+    font-size: 90px;
+    color: #e4c58b;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-back p {
+    color: #e4c58b;
+    margin-bottom: 25px;
+}
+
+.card-symbol {
+    font-size: 85px;
+    color: #e4c58b;
+    margin-bottom: 25px;
+}
+
+.flip-card-back h2 {
+    color: #f5e8cf;
+}
+
+/* 牌義區塊 */
+
+.card-meaning {
+    max-width: 500px;
+    margin: 20px auto 35px;
+    padding: 25px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 15px;
+}
+
+.card-meaning h3 {
+    color: #e4c58b;
+    margin: 15px 0;
+}
+
+.card-meaning p {
+    color: #e5d8ed;
+    line-height: 1.8;
+}
+
+/* 抽牌按鈕 */
+
+.draw-button {
+    display: inline-block;
+    padding: 14px 35px;
+    background: #e4c58b;
+    color: #20172f;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.draw-button:hover {
+    background: #f5dfae;
+    transform: translateY(-3px);
+}
+
+.back-home {
+    margin-top: 35px;
+}
+
+.back-home a {
+    color: #c8b6d4;
+    text-decoration: none;
+}
+
+
+
+/* 是非題占卜 */
+
+.yesno-form {
+    max-width: 500px;
+    margin: 35px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.yesno-form label {
+    color: #e4c58b;
+    font-size: 17px;
+}
+
+.yesno-form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 18px;
+    background: #352449;
+    border: 1px solid #e4c58b;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+.yesno-form input:focus {
+    border-color: #f5dfae;
+    box-shadow: 0 0 10px rgba(228,197,139,0.25);
+}
+
+.yesno-form .flip-card {
+    margin: 20px auto;
+}
+
+.yesno-answer {
+    font-size: 32px;
+    color: #e4c58b;
+    margin: 15px 0;
+}
+
+
+/* 三張牌占卜 */
+
+.three-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 45px auto;
+    max-width: 1100px;
+}
+
+.three-card-item {
+    width: 300px;
+    text-align: center;
+}
+
+.three-card-item > h3 {
+    color: #e4c58b;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.three-card-item .flip-card {
+    margin: 20px auto;
+}
+
+.three-card-item .card-meaning {
+    min-height: 160px;
+    padding: 20px;
+}
+
+/* 手機版排版 */
+
+@media (max-width: 768px) {
+    .three-card-container {
+        gap: 25px;
+    }
+
+    .three-card-item {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+
+/* 五張牌占卜 */
+
+.five-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 45px auto;
+    max-width: 1400px;
+}
+
+.five-card-item {
+    flex: 1 1 190px;
+    max-width: 250px;
+    min-width: 0;
+    text-align: center;
+}
+
+.five-card-item > h3 {
+    color: #e4c58b;
+    margin-bottom: 15px;
+}
+
+.five-card-item .flip-card {
+    width: 160px;
+    height: 235px;
+    margin: 20px auto;
+}
+
+.five-card-item .card-symbol {
+    font-size: 55px;
+}
+
+.five-card-item .flip-card-back h2 {
+    font-size: 20px;
+}
+
+.five-card-item .card-meaning {
+    min-height: 170px;
+    padding: 15px;
+}
+
+.five-reading {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.five-reading h2,
+.five-reading h3 {
+    color: #e4c58b;
+    margin: 20px 0 12px;
+}
+
+.five-reading p {
+    color: #e5d8ed;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .five-card-item {
+        flex: 1 1 145px;
+    }
+
+    .five-card-item .flip-card {
+        width: 130px;
+        height: 195px;
+    }
+
+    .five-card-item .card-symbol {
+        font-size: 42px;
+    }
+}
+
+
+/* 復古雷諾曼卡牌圖片 */
+
+.lenormand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.flip-card-back:has(.lenormand-image) {
+    overflow: hidden;
+    background: #f4e5c7;
+}
+
+.flip-card-back:has(.lenormand-image) > p,
+.flip-card-back:has(.lenormand-image) > h2 {
+    display: none;
+}
+
+
+/* 每日一張牌：翻牌後顯示牌義 */
+
+.daily-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.daily-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 卡牌翻轉更流暢 */
+
+.flip-card-inner {
+    transition: transform 1s ease-in-out;
+}
+
+/* 讓卡背有復古風格 */
+
+.flip-card-front {
+    background:
+        radial-gradient(circle, #483354 0%, #21172f 75%);
+    border: 4px double #e4c58b;
+    box-shadow:
+        inset 0 0 0 8px #21172f,
+        inset 0 0 0 10px #b89458,
+        0 10px 35px rgba(0,0,0,0.4);
+}
+
+
+/* =========================
+   三張牌占卜翻牌動畫
+========================= */
+
+/* 卡牌翻轉 */
+.three-flip {
+    transition: transform 1s ease-in-out;
+}
+
+/* 卡牌解讀預設隱藏 */
+.three-meaning {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+/* 翻牌後顯示解讀 */
+.three-meaning.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 卡牌圖片 */
+.three-card-item .flip-card-back {
+    overflow: hidden;
+    background: #f4e5c7;
+}
+
+.three-card-item .lenormand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* 卡牌解讀小標題 */
+.three-meaning h4 {
+    color: #e4c58b;
+    margin: 15px 0 8px;
+    font-size: 15px;
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+
+    .three-card-container {
+        gap: 25px;
+    }
+
+    .three-card-item {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+
+
+/* =========================
+   Yes / No 是非題翻牌動畫
+========================= */
+
+/* 翻牌速度 */
+#yesno-card {
+    transition: transform 1s ease-in-out;
+}
+
+/* 占卜結果預設隱藏 */
+.yesno-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+/* 翻牌完成後顯示結果 */
+.yesno-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 卡牌圖片 */
+.yesno-form ~ .flip-card .flip-card-back {
+    overflow: hidden;
+    background: #f4e5c7;
+}
+
+.yesno-form ~ .flip-card .lenormand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Yes / No 占卜答案 */
+.yesno-reveal .yesno-answer {
+    font-size: 36px;
+    font-weight: bold;
+    color: #e4c58b;
+    margin: 15px 0 25px;
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+
+    .yesno-form {
+        padding: 0 15px;
+    }
+
+    .yesno-reveal {
+        margin: 25px auto;
+    }
+
+}
+
+
+/* =========================
+   五張牌占卜翻牌動畫
+========================= */
+
+/* 五張卡牌翻轉 */
+.five-flip {
+    transition: transform 1s ease-in-out;
+}
+
+/* 單張牌義預設隱藏 */
+.five-meaning {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+/* 翻牌後顯示牌義 */
+.five-meaning.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 綜合解讀預設隱藏 */
+.five-reading-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+/* 五張牌翻完後顯示 */
+.five-reading-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 卡牌圖片 */
+.five-card-item .flip-card-back {
+    overflow: hidden;
+    background: #f4e5c7;
+}
+
+.five-card-item .lenormand-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* 卡牌解讀小標題 */
+.five-meaning h4 {
+    color: #e4c58b;
+    margin: 15px 0 8px;
+    font-size: 14px;
+}
+
+/* 核心牌特別標示 */
+.five-card-item:nth-child(3) > h3 {
+    color: #f5dfae;
+    text-shadow: 0 0 12px rgba(228,197,139,0.45);
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+
+    .five-card-container {
+        gap: 15px;
+    }
+
+    .five-card-item {
+        flex: 1 1 145px;
+    }
+
+    .five-card-item .flip-card {
+        width: 130px;
+        height: 195px;
+    }
+
+    .five-meaning {
+        padding: 15px;
+    }
+
+}
+
+
+/* =====================================
+   MYSTIC LENORMAND 首頁設計
+===================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.mystic-home {
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 10%,
+            #493158 0%,
+            #21162f 48%,
+            #100c1d 100%
+        );
+    color: #f5e8cf;
+}
+
+/* 星空背景 */
+
+.home-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1px 1px at 15% 20%, #f5dfae 99%, transparent),
+        radial-gradient(2px 2px at 80% 12%, #f5dfae 99%, transparent),
+        radial-gradient(1px 1px at 40% 35%, #fff 99%, transparent),
+        radial-gradient(2px 2px at 70% 55%, #d8b87b 99%, transparent),
+        radial-gradient(1px 1px at 20% 75%, #fff 99%, transparent),
+        radial-gradient(2px 2px at 90% 85%, #f5dfae 99%, transparent);
+    background-size: 280px 300px;
+    opacity: 0.35;
+    animation: homeTwinkle 6s ease-in-out infinite alternate;
+}
+
+@keyframes homeTwinkle {
+    from { opacity: 0.2; }
+    to { opacity: 0.6; }
+}
+
+/* 頁首 */
+
+.mystic-home .home-header {
+    position: relative;
+    z-index: 1;
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(228,197,139,0.2);
+}
+
+.home-logo {
+    color: #e4c58b;
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.mystic-home .home-header p {
+    margin-top: 10px;
+    color: #cbb8d5;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+/* 主視覺 */
+
+.home-hero {
+    position: relative;
+    z-index: 1;
+    min-height: 580px;
+    padding: 80px 20px 65px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-eyebrow {
+    color: #d8bd8c;
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.home-moon {
+    font-size: 105px;
+    color: #f0d6a1;
+    margin: 20px 0;
+    line-height: 1;
+    text-shadow: 0 0 35px rgba(228,197,139,0.4);
+    animation: homeFloat 4s ease-in-out infinite;
+}
+
+@keyframes homeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.home-hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.5;
+    letter-spacing: 7px;
+    font-weight: 500;
+    color: #f5e8cf;
+    text-shadow: 0 0 25px rgba(228,197,139,0.15);
+}
+
+.home-ornament {
+    margin: 22px 0;
+    color: #c9a66e;
+    letter-spacing: 5px;
+}
+
+.home-intro {
+    color: #d4c4df;
+    font-size: 16px;
+    line-height: 2.2;
+    letter-spacing: 2px;
+}
+
+.home-explore {
+    margin-top: 35px;
+    padding: 14px 32px;
+    border: 1px solid #c9a66e;
+    border-radius: 30px;
+    color: #f4dfb4;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.home-explore:hover {
+    background: #e4c58b;
+    color: #21162f;
+    box-shadow: 0 0 25px rgba(228,197,139,0.25);
+}
+
+/* 占卜區 */
+
+.home-readings {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 45px 20px 100px;
+}
+
+.home-section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.home-section-heading > p {
+    color: #d8bd8c;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.home-section-heading h2 {
+    color: #f5e8cf;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+}
+
+.home-section-heading > span {
+    color: #bfaecb;
+    font-size: 14px;
+}
+
+/* 四個占卜選單 */
+
+.home-reading-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.home-reading-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 350px;
+    padding: 32px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #f5e8cf;
+    background: linear-gradient(
+        145deg,
+        rgba(89,63,108,0.45),
+        rgba(28,20,43,0.85)
+    );
+    border: 1px solid rgba(228,197,139,0.4);
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+}
+
+.home-reading-card::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(228,197,139,0.12);
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.home-reading-card:hover {
+    transform: translateY(-10px);
+    border-color: #e4c58b;
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.3),
+        0 0 25px rgba(228,197,139,0.12);
+}
+
+.home-card-number {
+    color: #bca6c8;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.home-card-icon {
+    font-size: 62px;
+    color: #e4c58b;
+    margin: 22px 0 12px;
+    text-shadow: 0 0 20px rgba(228,197,139,0.2);
+    transition: transform 0.4s;
+}
+
+.home-reading-card:hover .home-card-icon {
+    transform: scale(1.15);
+}
+
+.home-reading-card h3 {
+    font-size: 23px;
+    color: #f5e8cf;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.home-card-english {
+    color: #c5a976;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.home-card-divider {
+    width: 55px;
+    height: 1px;
+    background: #b89a66;
+    margin: 22px 0;
+}
+
+.home-card-description {
+    color: #d3c3dc;
+    font-size: 14px;
+    line-height: 2;
+    flex-grow: 1;
+}
+
+.home-card-action {
+    margin-top: 25px;
+    color: #e4c58b;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* 底部 */
+
+.home-closing {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px 20px 75px;
+}
+
+.home-closing div {
+    color: #e4c58b;
+    font-size: 24px;
+    letter-spacing: 12px;
+    margin-bottom: 22px;
+}
+
+.home-closing p {
+    color: #c9b7d3;
+    letter-spacing: 2px;
+    line-height: 1.8;
+}
+
+.mystic-home .home-footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(228,197,139,0.2);
+}
+
+/* 手機版 */
+
+@media (max-width: 768px) {
+    .home-hero {
+        min-height: 520px;
+        padding: 65px 18px;
+    }
+
+    .home-hero h1 {
+        letter-spacing: 4px;
+    }
+
+    .home-reading-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .home-reading-card {
+        min-height: 320px;
+    }
+
+    .home-section-heading h2 {
+        font-size: 25px;
+    }
+
+    .home-intro {
+        font-size: 14px;
+    }
+
+    .home-logo {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+}
+
+/* 尊重使用者的減少動態效果設定 */
+
+@media (prefers-reduced-motion: reduce) {
+    .home-stars,
+    .home-moon {
+        animation: none;
+    }
+
+    .home-reading-card,
+    .home-card-icon {
+        transition: none;
+    }
+}
+
+
+/* ==========================================
+   Mystic Lenormand 占卜頁面統一美化
+========================================== */
+
+/* 占卜頁面背景 */
+body:not(.mystic-home) {
+    background:
+        radial-gradient(
+            ellipse at 50% 10%,
+            #493158 0%,
+            #21162f 48%,
+            #100c1d 100%
+        );
+    background-attachment: fixed;
+}
+
+/* 占卜頁面標題 */
+.daily-page h1 {
+    color: #f4dfb4;
+    letter-spacing: 4px;
+    font-size: clamp(26px, 4vw, 38px);
+    text-shadow: 0 0 20px rgba(228,197,139,0.2);
+}
+
+/* 卡牌背面 */
+.flip-card-front {
+    background:
+        radial-gradient(
+            circle at center,
+            #51375e 0%,
+            #302040 50%,
+            #171122 100%
+        );
+    border: 4px double #e4c58b;
+    color: #f4dfb4;
+    text-shadow: 0 0 20px rgba(228,197,139,0.5);
+    box-shadow:
+        inset 0 0 0 8px #21172f,
+        inset 0 0 0 10px #b89458,
+        inset 0 0 35px rgba(228,197,139,0.12),
+        0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* 卡牌正面金色邊框 */
+.flip-card-back {
+    border: 3px solid #e4c58b;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.4),
+        0 0 20px rgba(228,197,139,0.12);
+}
+
+/* 牌義解讀面板 */
+.card-meaning,
+.five-reading {
+    background: linear-gradient(
+        145deg,
+        rgba(82,55,100,0.45),
+        rgba(27,19,42,0.85)
+    );
+    border: 1px solid rgba(228,197,139,0.35);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* 牌義標題 */
+.card-meaning h3,
+.five-reading h2,
+.five-reading h3 {
+    color: #f4dfb4;
+    letter-spacing: 2px;
+}
+
+/* 牌義內文 */
+.card-meaning p,
+.five-reading p {
+    color: #e2d5e9;
+    line-height: 2;
+}
+
+/* 抽牌按鈕 */
+.draw-button {
+    background: linear-gradient(
+        135deg,
+        #f4dfb4,
+        #c9a66e
+    );
+    color: #21162f;
+    border: 1px solid #e4c58b;
+    border-radius: 30px;
+    padding: 15px 38px;
+    box-shadow: 0 5px 20px rgba(228,197,139,0.18);
+    transition: all 0.3s ease;
+}
+
+.draw-button:hover {
+    background: #f5e8cf;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(228,197,139,0.35);
+}
+
+/* 返回首頁 */
+.back-home a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #d8bd8c;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(228,197,139,0.3);
+    transition: all 0.3s ease;
+}
+
+.back-home a:hover {
+    color: #fff0c9;
+    border-color: #e4c58b;
+}
+
+/* 輸入問題的欄位 */
+.yesno-form input {
+    background: rgba(37,25,54,0.9);
+    border: 1px solid #c9a66e;
+    border-radius: 12px;
+    color: #f5e8cf;
+}
+
+.yesno-form input:focus {
+    box-shadow: 0 0 18px rgba(228,197,139,0.25);
+}
+
+/* 五張牌核心位置 */
+.five-card-item:nth-child(3) > h3 {
+    color: #ffe4ac;
+    text-shadow: 0 0 15px rgba(228,197,139,0.5);
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .daily-page {
+        padding: 40px 15px;
+    }
+
+    .card-meaning,
+    .five-reading {
+        padding: 20px;
+    }
+
+    .draw-button {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>是非題占卜 | Mystic Lenormand</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fan.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='sanctuary-inner.css') }}">
+</head>
+
+<body class="sanctuary-reading sanctuary-yesno">
+<div class="sanctuary-backdrop" aria-hidden="true"></div>
+
+<header class="sanctuary-header"><a class="sanctuary-brand" href="{{ url_for('home') }}">☾ &nbsp; Mystic Lenormand</a><nav class="sanctuary-nav"><a href="{{ url_for('home') }}">首頁</a><a href="{{ url_for('daily') }}">每日一張</a><a href="{{ url_for('yesno') }}">是非題</a><a href="{{ url_for('three') }}">三張牌</a><a href="{{ url_for('five') }}">五張牌</a></nav><div class="sanctuary-header-original">
+    <h2>☾ MYSTIC LENORMAND</h2>
+    <p>是非題占卜</p>
+</div></header>
+
+<main class="daily-page sanctuary-main"><div class="sanctuary-kicker">✦ &nbsp; M Y S T I C &nbsp; L E N O R M A N D &nbsp; ✦</div>
+
+    <h1>✦ 是非題占卜 ✦</h1>
+
+    <p>
+        靜下心來，將心中的疑問交給卡牌，
+        尋找屬於你的答案。
+    </p>
+
+    <!-- 問題輸入區 -->
+    <form method="POST" class="yesno-form">
+
+        <label for="question">
+            ✧ 你想詢問什麼？
+        </label>
+
+        <input
+            type="text"
+            id="question"
+            name="question"
+            placeholder="例如：這次的計畫會順利嗎？"
+            value="{{ question or '' }}"
+            maxlength="200"
+            required
+        >
+
+        {% if not card %}
+
+        <!-- 尚未抽牌時的卡背 -->
+        <div class="flip-card">
+
+            <div class="flip-card-inner">
+
+                <div class="flip-card-front">
+                    ☾
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <button type="submit" class="draw-button">
+
+            {% if card %}
+                重新抽牌
+            {% else %}
+                開始占卜
+            {% endif %}
+
+        </button>
+
+    </form>
+
+    {% if card %}
+
+    <!-- 抽牌結果 -->
+    <div class="flip-card">
+
+        <div class="flip-card-inner" id="yesno-card">
+
+            <!-- 卡牌背面 -->
+            <div class="flip-card-front">
+                ☾
+            </div>
+
+            <!-- 卡牌正面 -->
+            <div class="flip-card-back">
+
+                <img
+                    src="{{ url_for('static', filename=card.image) }}"
+                    alt="{{ card.name }}"
+                    class="lenormand-image"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 占卜解讀 -->
+    <div class="card-meaning yesno-reveal">
+
+        <h3>✧ 你的問題</h3>
+        <p>{{ question }}</p>
+
+        <h3>✧ 占卜結果</h3>
+
+        <h2 class="yesno-answer">
+            {{ answer }}
+        </h2>
+
+        <h3>✧ 抽中的卡牌</h3>
+        <p>{{ card.name }}</p>
+
+        <h3>✧ 卡牌關鍵字</h3>
+        <p>{{ card.keywords }}</p>
+
+        <h3>✧ 卡牌解讀</h3>
+        <p>{{ card.meaning }}</p>
+                    {% if card.detail %}<h4>✧ 詳細牌義</h4><p>{{ card.detail }}</p>{% endif %}
+                    {% if card.advice %}<h4>✧ 行動建議</h4><p>{{ card.advice }}</p>{% endif %}
+
+    </div>
+
+    {% endif %}
+
+    <!-- 返回首頁 -->
+    <p class="back-home">
+
+        <a href="{{ url_for('home') }}">
+            ← 返回首頁
+        </a>
+
+    </p>
+
+<div class="sanctuary-footer-mark" aria-hidden="true">☽ &nbsp; ✧ &nbsp; ✦ &nbsp; ✧ &nbsp; ☾</div></main>
+
+<!-- 翻牌動畫 -->
+{% if card %}
+
+<script>
+
+window.addEventListener("load", function () {
+
+    const card =
+        document.getElementById("yesno-card");
+
+    const result =
+        document.querySelector(".yesno-reveal");
+
+    // 0.5 秒後開始翻牌
+    setTimeout(function () {
+
+        card.classList.add("flipped");
+
+    }, 500);
+
+    // 翻牌結束後顯示結果
+    setTimeout(function () {
+
+        result.classList.add("visible");
+
+    }, 1600);
+
+});
+
+</script>
+
+{% endif %}
+
+<script src="{{ url_for('static', filename='shuffle.js') }}" defer></script>
+</body>
+</html>

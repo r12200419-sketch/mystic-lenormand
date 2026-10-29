@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>每日一張牌 | Mystic Lenormand</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fan.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='sanctuary-inner.css') }}">
+</head>
+<body class="sanctuary-reading sanctuary-daily">
+<div class="sanctuary-backdrop" aria-hidden="true"></div>
+
+<header class="sanctuary-header"><a class="sanctuary-brand" href="{{ url_for('home') }}">☾ &nbsp; Mystic Lenormand</a><nav class="sanctuary-nav"><a href="{{ url_for('home') }}">首頁</a><a href="{{ url_for('daily') }}">每日一張</a><a href="{{ url_for('yesno') }}">是非題</a><a href="{{ url_for('three') }}">三張牌</a><a href="{{ url_for('five') }}">五張牌</a></nav><div class="sanctuary-header-original">
+    <h2>☾ MYSTIC LENORMAND</h2>
+    <p>每日一張牌</p>
+</div></header>
+
+<main class="daily-page sanctuary-main"><div class="sanctuary-kicker">✦ &nbsp; M Y S T I C &nbsp; L E N O R M A N D &nbsp; ✦</div>
+
+    <h1>✦ 今日的命運指引 ✦</h1>
+    <p>靜下心來，抽取屬於你的今日卡牌。</p>
+
+    {% if card %}
+
+    <div class="flip-card">
+        <div class="flip-card-inner" id="daily-card-inner">
+
+            <div class="flip-card-front">
+                ☾
+            </div>
+
+            <div class="flip-card-back">
+                <img
+                    src="{{ url_for('static', filename=card.image) }}"
+                    alt="{{ card.name }}"
+                    class="lenormand-image"
+                >
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-meaning daily-reveal">
+        <h3>✧ 卡牌關鍵字</h3>
+        <p>{{ card.keywords }}</p>
+
+        <h3>✧ 今日指引</h3>
+        <p>{{ card.meaning }}</p>
+                    {% if card.detail %}<h4>✧ 詳細牌義</h4><p>{{ card.detail }}</p>{% endif %}
+                    {% if card.advice %}<h4>✧ 行動建議</h4><p>{{ card.advice }}</p>{% endif %}
+    </div>
+
+    <form method="POST">
+        <button type="submit" class="draw-button">
+            重新抽牌
+        </button>
+    </form>
+
+    {% else %}
+
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                ☾
+            </div>
+        </div>
+    </div>
+
+    <form method="POST">
+        <button type="submit" class="draw-button">
+            抽取今日指引
+        </button>
+    </form>
+
+    {% endif %}
+
+    <p class="back-home">
+        <a href="{{ url_for('home') }}">
+            ← 返回首頁
+        </a>
+    </p>
+
+<div class="sanctuary-footer-mark" aria-hidden="true">☽ &nbsp; ✧ &nbsp; ✦ &nbsp; ✧ &nbsp; ☾</div></main>
+
+
+{% if card %}
+<script>
+    window.addEventListener("load", function () {
+        const cardInner = document.getElementById("daily-card-inner");
+        const cardMeaning = document.querySelector(".daily-reveal");
+
+        // 先顯示卡背，再翻開卡牌
+        setTimeout(function () {
+            cardInner.classList.add("flipped");
+        }, 500);
+
+        // 翻牌完成後，顯示牌義
+        setTimeout(function () {
+            cardMeaning.classList.add("visible");
+        }, 1600);
+    });
+</script>
+{% endif %}
+
+
+
+<script src="{{ url_for('static', filename='shuffle.js') }}" defer></script>
+</body>
+</html>

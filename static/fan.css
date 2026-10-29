@@ -1,0 +1,55 @@
+/* Mystic Lenormand · elegant velvet shuffle table. Import via style.css. */
+.fan-active .daily-page > .flip-card,.fan-active .three-card-container,.fan-active .five-card-container,.fan-active .yesno-form .flip-card{display:none!important}
+.fan-active .daily-page form[method="POST"] > .draw-button{display:none!important}
+.fan-panel{--gold:#d6b780;--muted:#c6b6c9;position:relative;isolation:isolate;width:min(98%,1120px);margin:28px auto 24px;padding:30px 32px 24px;border:1px solid rgba(221,186,127,.36);border-radius:24px;background:linear-gradient(155deg,rgba(48,32,57,.96),rgba(25,18,36,.97));box-shadow:0 26px 75px #080511a3,inset 0 1px 0 #f3d9a520;text-align:center;overflow:hidden}
+.fan-panel::before,.fan-panel::after{content:"✧";position:absolute;top:15px;color:#d9b780a6;font-size:19px;pointer-events:none}.fan-panel::before{left:22px}.fan-panel::after{right:22px}
+.fan-eyebrow{color:#c9a77c;font-family:Georgia,serif;letter-spacing:4px;font-size:10px;margin:4px auto 10px;opacity:.82}
+.fan-title{font-family:Georgia,"Noto Serif TC","PMingLiU",serif;color:#f3d6a6;font-size:clamp(23px,2.8vw,31px);font-weight:500;letter-spacing:5px;margin:0 auto 9px;text-shadow:0 2px 20px #f1c88920}
+.fan-subtitle{color:#d9c7db;font-size:14px;line-height:1.85;margin:0 auto 24px;letter-spacing:.4px}
+.fan-table{height:430px;position:relative;overflow:hidden;border-radius:16px;border:1px solid #c9a8758c;background:radial-gradient(ellipse at 50% 40%,#4d3b50 0%,#34263e 49%,#21192d 100%);box-shadow:inset 0 0 90px #080510b3,inset 0 0 0 7px #a98a5222,0 12px 35px #0b071b85;touch-action:none;cursor:grab;user-select:none}
+.fan-table.is-running{cursor:grabbing}
+.fan-table::before{content:"";position:absolute;inset:13px;border:1px solid #ddbd7d2b;border-radius:9px;pointer-events:none;z-index:1}
+.fan-table::after{content:"✧";position:absolute;right:23px;bottom:12px;color:#d6b78080;font-size:17px;pointer-events:none;z-index:2}
+.fan-scatter{position:absolute;inset:0}
+.fan-card{position:absolute;left:0;top:0;width:60px;height:90px;background:url('/static/card-back.svg') center/100% 100% no-repeat;filter:drop-shadow(0 3px 3px #080513b8);pointer-events:none;will-change:transform;backface-visibility:hidden}
+.fan-table-hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);white-space:nowrap;z-index:3;color:#e3cda0c7;font-size:11px;letter-spacing:2px;pointer-events:none;text-shadow:0 2px 5px #080512}
+.fan-controls{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:12px auto 4px}
+.fan-controls .draw-button,.fan-reset{min-width:164px;padding:12px 23px!important;border-radius:100px!important;font-size:14px!important;letter-spacing:1px;touch-action:none;user-select:none;transition:background .2s,box-shadow .2s,transform .2s;cursor:pointer}
+.fan-hold{background:#38273e!important;border:1px solid #c8a774!important;color:#f0d7b3!important;box-shadow:inset 0 0 0 1px #fff1!important}
+.fan-hold:hover{background:#48304d!important;box-shadow:0 0 18px #c6a4782b!important}
+.fan-done{background:linear-gradient(115deg,#e8d4ab,#cba874)!important;border:1px solid #f6e3bb!important;color:#2c1d31!important;box-shadow:0 5px 22px #0a06163d!important}
+.fan-controls button:disabled{opacity:.4!important;cursor:not-allowed;transform:none!important}
+.fan-status{min-height:25px;color:#d3bdd7;font-size:13px;margin:15px auto 0;line-height:1.7;letter-spacing:.3px}
+.fan-deck{display:none;position:relative;height:300px;margin:18px auto 4px;touch-action:pan-y;overflow:hidden}
+.fan-panel.is-choosing .fan-table,.fan-panel.is-choosing .fan-hold,.fan-panel.is-choosing .fan-done{display:none}
+.fan-panel.is-choosing .fan-deck{display:block}
+.fan-choice{position:absolute;width:clamp(51px,7vw,78px);height:clamp(78px,10.5vw,117px);background:url('/static/card-back.svg') center/100% 100% no-repeat;border:0;padding:0;cursor:pointer;filter:drop-shadow(0 5px 5px #0009);transform-origin:50% 110%;transition:transform .22s ease,filter .22s ease;outline-offset:3px}
+.fan-choice:hover,.fan-choice:focus-visible{filter:drop-shadow(0 0 12px #e3bc7c) drop-shadow(0 7px 8px #000a);z-index:100!important}
+.fan-choice.is-selected{opacity:.25;pointer-events:none}
+.fan-selected{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:14px auto;min-height:55px}
+.fan-slot{border:1px dashed #c4a270;border-radius:10px;min-width:80px;min-height:50px;padding:9px 12px;color:#d5bfd9;font-size:13px;display:flex;align-items:center;justify-content:center}
+.fan-slot.filled{background:#c9a66e22;border-style:solid;color:#f7dfb2}
+.fan-panel.is-ready .fan-deck,.fan-panel.is-ready .fan-choice{pointer-events:none}
+.fan-reset{background:transparent;border:1px solid #aa8b6b;color:#e7d0b4}
+.fan-panel.is-choosing .fan-subtitle{margin-bottom:0}
+.fan-panel.is-ready .fan-status{color:#f4dfb4}
+@media(max-width:700px){.fan-panel{padding:23px 12px 19px}.fan-table{height:340px}.fan-card{width:47px;height:71px}.fan-deck{height:260px}.fan-choice{width:53px;height:80px}.fan-controls .draw-button{min-width:135px;font-size:12px!important;padding:10px 14px!important}.fan-eyebrow{letter-spacing:2px}}
+@media(prefers-reduced-motion:reduce){.fan-card,.fan-choice{transition:none!important}}
+
+/* 無縫過場：原洗牌桌與目標扇形在動畫期間都不顯示，
+   由螢幕座標的卡牌接力移動，結束後才顯示可點選的扇形。 */
+.fan-panel.is-transitioning .fan-table,
+.fan-panel.is-transitioning .fan-hold,
+.fan-panel.is-transitioning .fan-done{display:none!important}
+.fan-panel.is-transitioning .fan-deck{display:block!important;visibility:hidden!important}
+.fan-morph-layer{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:visible}
+.fan-morph-card{position:absolute;transform-origin:center center;background:url('/static/card-back.svg') center/100% 100% no-repeat;filter:drop-shadow(0 5px 5px #0008);will-change:transform;backface-visibility:hidden}
+
+/* V2: the moving deck stays above the ritual table throughout both phases. */
+.fan-morph-layer{z-index:99999;contain:layout style}
+.fan-morph-card{background-image:url('/static/card-back-premium.webp');background-size:100% 100%;border-radius:4px;transform-origin:top left}
+
+/* V3: 展牌終點與互動扇形使用完全相同的版面高度，避免交接瞬間跳位。 */
+.fan-panel.is-transitioning .fan-subtitle{margin-bottom:0}
+.fan-panel.is-transitioning.is-choosing .fan-deck{display:block!important;visibility:hidden!important}
+.fan-morph-card{transform-origin:top left!important}
